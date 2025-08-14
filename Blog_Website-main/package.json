@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "blogwebsite": "nodemon server.js"
-  },
+"scripts": {
+  "postinstall": "npm install --prefix ../frontend && npm run build --prefix ../frontend && rm -rf public && mv ../frontend/dist public",
+  "start": "node server.js"
+}
+,
   "author": "",
   "license": "ISC",
   "dependencies": {
