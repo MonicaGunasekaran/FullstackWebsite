@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
 "scripts": {
-  "postinstall": "npm install --prefix ../frontend-react && npm run build --prefix ../frontend-react && rm -rf public && mv ../frontend-react/dist public",
-  "start": "node server.js"
+   "start": "node server.js"
 }
 ,
   "author": "",
