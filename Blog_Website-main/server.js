@@ -11,7 +11,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://funny-seahorse-3732de.netlify.app/",
+      "https://funny-seahorse-3732de.netlify.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
@@ -32,14 +32,14 @@ const apiArticles = require("./routes/api.articles");
 app.use("/api/articles", apiArticles);
 
 // === Serve React only in production ===
-if (process.env.NODE_ENV === "production") {
-  const buildPath = path.join(__dirname, "../frontend-react/dist");
-  app.use(express.static(buildPath));
+// if (process.env.NODE_ENV === "production") {
+//   const buildPath = path.join(__dirname, "../frontend-react/dist");
+//   app.use(express.static(buildPath));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(buildPath, "index.html"));
-  });
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(buildPath, "index.html"));
+//   });
+// }
 
 // === Start Server ===
 const PORT = process.env.PORT || 3000;
