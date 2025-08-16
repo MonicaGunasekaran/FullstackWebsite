@@ -7,7 +7,17 @@ const path = require("path");
 const app = express();
 
 // === Middleware ===
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://funny-seahorse-3732de.netlify.app/",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -33,6 +43,4 @@ if (process.env.NODE_ENV === "production") {
 
 // === Start Server ===
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+app.listen(PORT, "0.0.0.0", () => console.log(`Server running on ${PORT}`));
